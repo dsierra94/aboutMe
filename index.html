@@ -1,76 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-       <title>About Me</title> 
-    </head>
-    <body>
-        <h1>Diego Alejandro Sierra Arcila</h1>
-        <p>Hello, my name is Diego Alejandro Sierra Arcila. <br>
-            I'm a Chemical Engineer, Industrial Engineer and computer scientist residing in Paris, France. <br>
-            I'm passionate about:
-            <ul>
-                <li>Cocktails</li>
-                <li>Chess</li>
-                <li>Memory techniques</li>
-            </ul> <br>
-            My top 3 favorite songs are:
-            <ol>
-                <li>Bajo Presión - Leiva</li>
-                <li>Otro Lugar - Armenia</li>
-                <li>Where do we go? - La Pegatina</li>
-            </ol> <br> 
-            <a href="https://github.com" target="_blank">GitHub Profile</a> <br>
-            <img src="https://picsum.photos/500/400" alt="something" width="500" height="400"> <br>
-        </p>
-        <div id="bar-chart"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Alejandro Sierra Arcila</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="particles-js"></div>
 
-        <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-        <script>
-        const data = [
-            { name: "A", value: 1 },
-            { name: "B", value: 5 },
-            { name: "C", value: 8 },
-            { name: "D", value: 10 }
-        ];
+    <header class="navbar">
+        <a href="#home" class="brand">DS</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-        const margin = { top: 20, right: 20, bottom: 40, left: 40 };
-        const width = 600 - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">Welcome</p>
+                <h1>Hi, I'm Diego Alejandro Sierra Arcila</h1>
+                <p class="lead">Chemical engineer, industrial engineer and computer scientist based in Paris, turning data into clear visuals.</p>
+                <a href="#about" class="btn">Learn more</a>
+            </div>
+            <div class="hero-chart">
+                <svg id="pie-chart" viewBox="-120 -120 240 240" role="img" aria-label="Sample pie chart"></svg>
+                <ul id="pie-legend" class="legend"></ul>
+                <div id="pie-tooltip" class="tooltip" hidden></div>
+            </div>
+        </section>
 
-        const svg = d3.select("#bar-chart")
-            .append("svg")
-            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
-            .style("max-width", "100%")
-            .style("height", "auto")
-            .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
+        <section id="about" class="panel">
+            <h2>About</h2>
+            <p>Placeholder text: write a short introduction about yourself, your background and what you are passionate about.</p>
+        </section>
 
-        const x = d3.scaleBand()
-            .domain(data.map(d => d.name))
-            .range([0, width])
-            .padding(0.2);
+        <section id="contact" class="panel">
+            <h2>Contact</h2>
+            <p>Placeholder text: add your email, GitHub and LinkedIn links here.</p>
+        </section>
+    </main>
 
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.value)])
-            .nice()
-            .range([height, 0]);
-
-        svg.append("g")
-            .attr("transform", `translate(0,${height})`)
-            .call(d3.axisBottom(x));
-
-        svg.append("g")
-            .call(d3.axisLeft(y));
-
-        svg.selectAll(".bar")
-            .data(data)
-            .join("rect")
-            .attr("class", "bar")
-            .attr("x", d => x(d.name))
-            .attr("y", d => y(d.value))
-            .attr("width", x.bandwidth())
-            .attr("height", d => height - y(d.value))
-            .attr("fill", "steelblue");
-        </script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
